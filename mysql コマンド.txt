@@ -1,0 +1,50 @@
+■mysql コマンド
+
+
+＄ mysql -u root -p
+
+# ユーザ作成
+create user suser@localhost identified with caching_sha2_password by 'spass';
+
+# DB 作成
+create database company default character set utf8mb4 collate utf8mb4_general_ci;
+
+# 権限
+grant all on company.* to suser@localhost;
+
+
+---------------------------------
+
+●DB 系
+
+# DB 一覧
+show databases;
+
+# DB を選択
+use company;
+
+---------------------------------
+
+●テーブル
+
+show tables;
+
+
+# テーブル作成
+create table shain (
+    id int primary key,
+    name varchar(20),
+    sei varchar(4),
+    nen int,
+    address varchar(30)
+);
+
+# データ挿入
+insert into shain (id, name, sei, nen, address) values
+(100, '山田太郎', '男', 2002, '東京都世田谷区'),
+(101, '鈴木義信', '男', 2003, '宮城県仙台市'),
+(102, '佐藤香織', '女', 2004, '福岡県福岡市'),
+(103, '高橋正美', '女', 2005, '福岡県福岡市'),
+(104, '佐藤隆一', '男', 2003, '宮城県仙台市'),
+(105, '小林誠二', '男', 2002, '東京都江東区');
+

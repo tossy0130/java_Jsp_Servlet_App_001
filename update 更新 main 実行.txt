@@ -1,0 +1,19 @@
+//社員情報をを更新
+public static void updateShain(int id) throws SQLException {
+
+//社員を更新するSQL
+String sql = "update shain set name=?, sei=?, nen=?,  address=? where id=?";
+try (Connection con = ConnectionBase.getConnection();
+PreparedStatement pstmt = con.prepareStatement(sql);) {
+//パラメータをSQLにセット
+pstmt.setString(1, "高崎太郎");
+pstmt.setString(2, "男");
+pstmt.setInt(3, 2010);
+pstmt.setString(4, "群馬県高崎市");
+pstmt.setInt(5,id);
+//SQL文を表示
+System.out.println(pstmt.toString());
+//SQL実行
+pstmt.executeUpdate();
+}
+}
